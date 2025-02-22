@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { FileText, Search, Upload, ChevronRight, ChevronDown, Folder } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -138,7 +139,6 @@ const Index = () => {
               >
                 <Folder className="text-[#F97316] w-16 h-16" />
                 <span className="font-semibold text-lg text-gray-800 text-center">{doc.name}</span>
-                <div className="text-sm text-gray-500">{doc.files.length} files</div>
               </button>
               {doc.isOpen && (
                 <div className="bg-gray-50 p-4">
