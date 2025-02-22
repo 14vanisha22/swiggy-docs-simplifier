@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FileText, Search, Upload, ChevronRight, ChevronDown } from "lucide-react";
+import { FileText, Search, Upload, ChevronRight, ChevronDown, Folder } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -128,37 +128,31 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Documents List */}
-        <div className="bg-white rounded-lg shadow-lg">
+        {/* Documents Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDocuments.map((doc, index) => (
-            <div key={doc.name} className="border-b last:border-b-0">
+            <div key={doc.name} className="bg-white rounded-xl shadow-md overflow-hidden">
               <button
                 onClick={() => toggleDocument(index)}
-                className="w-full px-8 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                className="w-full p-6 flex flex-col items-center gap-4 hover:bg-gray-50 transition-colors"
               >
-                <div className="flex items-center space-x-4">
-                  <FileText className="text-[#F97316]" size={24} />
-                  <span className="font-semibold text-lg text-gray-800">{doc.name}</span>
-                </div>
-                {doc.isOpen ? (
-                  <ChevronDown className="text-gray-500" size={24} />
-                ) : (
-                  <ChevronRight className="text-gray-500" size={24} />
-                )}
+                <Folder className="text-[#F97316] w-16 h-16" />
+                <span className="font-semibold text-lg text-gray-800 text-center">{doc.name}</span>
+                <div className="text-sm text-gray-500">{doc.files.length} files</div>
               </button>
               {doc.isOpen && (
-                <div className="bg-gray-50 px-8 py-4">
-                  <ul className="space-y-3">
+                <div className="bg-gray-50 p-4">
+                  <div className="grid grid-cols-2 gap-3">
                     {doc.files.map((file) => (
-                      <li
+                      <div
                         key={file}
-                        className="flex items-center space-x-3 px-6 py-3 bg-white rounded-lg hover:shadow-md transition-all duration-200"
+                        className="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition-all duration-200"
                       >
-                        <FileText className="text-gray-400" size={20} />
-                        <span className="text-gray-700 font-medium">{file}</span>
-                      </li>
+                        <FileText className="text-gray-400 w-8 h-8 mb-2" />
+                        <span className="text-gray-700 font-medium text-sm text-center">{file}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>
