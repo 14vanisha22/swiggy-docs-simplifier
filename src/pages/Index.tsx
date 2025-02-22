@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { FileText, Search, Upload, ChevronRight, ChevronDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -82,7 +81,6 @@ const Index = () => {
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
-      // Handle file upload logic here
       console.log("File uploaded:", event.target.files[0].name);
     }
   };
@@ -91,17 +89,16 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-center gap-4 mb-8">
           <img 
             src="/lovable-uploads/675472e9-98a0-4e08-9ccd-f4d2c4a028b0.png" 
             alt="Swiggy Logo" 
-            className="h-12 w-auto"
+            className="h-16 w-auto"
           />
+          <h1 className="text-4xl font-bold text-[#F97316]">
+            Swiggy Documents
+          </h1>
         </div>
-
-        <h1 className="text-4xl font-bold text-center text-[#F97316] mb-8">
-          Swiggy Documents
-        </h1>
 
         {/* Search and Upload Section */}
         <div className="flex gap-4 mb-8">
@@ -132,33 +129,33 @@ const Index = () => {
         </div>
 
         {/* Documents List */}
-        <div className="bg-white rounded-lg shadow-sm border">
+        <div className="bg-white rounded-lg shadow-lg">
           {filteredDocuments.map((doc, index) => (
             <div key={doc.name} className="border-b last:border-b-0">
               <button
                 onClick={() => toggleDocument(index)}
-                className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                className="w-full px-8 py-5 flex items-center justify-between hover:bg-gray-50 transition-colors"
               >
-                <div className="flex items-center space-x-3">
-                  <FileText className="text-[#F97316]" size={20} />
-                  <span className="font-medium text-gray-700">{doc.name}</span>
+                <div className="flex items-center space-x-4">
+                  <FileText className="text-[#F97316]" size={24} />
+                  <span className="font-semibold text-lg text-gray-800">{doc.name}</span>
                 </div>
                 {doc.isOpen ? (
-                  <ChevronDown className="text-gray-400" size={20} />
+                  <ChevronDown className="text-gray-500" size={24} />
                 ) : (
-                  <ChevronRight className="text-gray-400" size={20} />
+                  <ChevronRight className="text-gray-500" size={24} />
                 )}
               </button>
               {doc.isOpen && (
-                <div className="bg-gray-50 px-6 py-3">
-                  <ul className="space-y-2">
+                <div className="bg-gray-50 px-8 py-4">
+                  <ul className="space-y-3">
                     {doc.files.map((file) => (
                       <li
                         key={file}
-                        className="flex items-center space-x-3 px-4 py-2 hover:bg-gray-100 rounded-md transition-colors"
+                        className="flex items-center space-x-3 px-6 py-3 bg-white rounded-lg hover:shadow-md transition-all duration-200"
                       >
-                        <FileText className="text-gray-400" size={16} />
-                        <span className="text-gray-600">{file}</span>
+                        <FileText className="text-gray-400" size={20} />
+                        <span className="text-gray-700 font-medium">{file}</span>
                       </li>
                     ))}
                   </ul>
