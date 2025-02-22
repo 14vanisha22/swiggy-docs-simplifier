@@ -142,14 +142,14 @@ const Index = () => {
               </button>
               {doc.isOpen && (
                 <div className="bg-gray-50 p-4">
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-2">
                     {doc.files.map((file) => (
                       <div
                         key={file}
-                        className="flex flex-col items-center p-4 bg-white rounded-lg hover:shadow-md transition-all duration-200"
+                        className="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-all duration-200"
                       >
-                        <FileText className="text-gray-400 w-8 h-8 mb-2" />
-                        <span className="text-gray-700 font-medium text-sm text-center">{file}</span>
+                        <FileText className="text-gray-400 w-5 h-5 flex-shrink-0" />
+                        <span className="text-gray-700 font-medium">{file}</span>
                       </div>
                     ))}
                   </div>
@@ -164,3 +164,4 @@ const Index = () => {
 };
 
 export default Index;
+
